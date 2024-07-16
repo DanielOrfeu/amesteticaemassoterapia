@@ -32,7 +32,7 @@ export default function Home() {
   }, [size])
 
   return (
-    <main className="flex w-full flex-1 flex-col border-4 border-red-800">
+    <main className="flex w-full flex-1 flex-col">
       <Header />
       <div className="content flex flex-1 flex-col items-center justify-center gap-5 p-8">
         <div className="presentation flex flex-col items-center justify-center gap-2">
