@@ -1,5 +1,8 @@
 'use client'
+import { Button } from '@/components/ui/button'
 import { ProcedureModel, procedures } from '@/data/procedures'
+import { PhoneCall } from 'lucide-react'
+import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
@@ -75,9 +78,31 @@ function Procedure() {
               </ul>
             </span>
           </div>
+          <Button className="mt-8 w-fit self-center">
+            <Link
+              className="flex flex-row items-center gap-2"
+              href={`https://wa.me/5521989711190?text=${encodeURIComponent(`Olá. Gostaria de agendar um horário de atendimento para ${selectedProcedure.name}.`)}`}
+            >
+              <PhoneCall size={24} className="hidden sm:flex" />
+              <span className="">Agendar procedimento</span>
+            </Link>
+          </Button>
         </div>
       ) : (
-        <h1>Não econtrado</h1>
+        <div className="flex flex-1 flex-col items-center justify-center p-8">
+          <h1 className="self-center text-center text-xl font-bold sm:text-2xl">
+            Procedimento não encontrado
+          </h1>
+          <Button className="mt-8 w-fit self-center">
+            <Link
+              className="flex flex-row items-center gap-2"
+              href={`https://wa.me/5521989711190?text=${encodeURIComponent(`Olá. Gostaria de mais detalhes sobre os procedimentos disponíveis. Fiz uma busca no site e não encontrei o que procurava.`)}`}
+            >
+              <PhoneCall size={24} className="hidden sm:flex" />
+              <span>Buscar informações sobre procedimentos</span>
+            </Link>
+          </Button>
+        </div>
       )}
     </>
   )
