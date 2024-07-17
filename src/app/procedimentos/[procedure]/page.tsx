@@ -17,7 +17,7 @@ function Procedure() {
   return (
     <>
       {selectedProcedure ? (
-        <div className="flex flex-1 flex-col justify-evenly p-8">
+        <div className="flex flex-1 flex-col justify-center p-8">
           <div className="main-txt flex flex-col items-center justify-center gap-5">
             <h1 className="text-xl font-bold sm:text-3xl">
               {selectedProcedure.name}
@@ -36,7 +36,9 @@ function Procedure() {
                   <span className="text-sm sm:text-lg md:w-6/12">
                     <ul>
                       {selectedProcedure.indications.split(';').map((i) => (
-                        <li key={i}>{i}</li>
+                        <li className="list-disc" key={i}>
+                          {i}
+                        </li>
                       ))}
                     </ul>
                   </span>
@@ -52,7 +54,9 @@ function Procedure() {
                   <span className="text-sm sm:text-lg md:w-6/12">
                     <ul>
                       {selectedProcedure.benefits.split(';').map((i) => (
-                        <li key={i}>{i}</li>
+                        <li className="list-disc" key={i}>
+                          {i}
+                        </li>
                       ))}
                     </ul>
                   </span>
@@ -64,7 +68,9 @@ function Procedure() {
             <span className="text-sm sm:text-lg md:w-6/12">
               <ul>
                 {selectedProcedure.contraindications.split(';').map((i) => (
-                  <li key={i}>{i}</li>
+                  <li className="list-disc" key={i}>
+                    {i}
+                  </li>
                 ))}
               </ul>
             </span>
