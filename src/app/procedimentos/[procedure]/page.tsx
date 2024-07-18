@@ -30,7 +30,7 @@ function Procedure() {
             </span>
           </div>
           <div className="infos flex flex-col items-center justify-center gap-5">
-            {selectedProcedure.indications &&
+            {/* {selectedProcedure.indications &&
               selectedProcedure.indications !== '' && (
                 <>
                   <h1 className="boder-2 text-xl font-bold sm:text-2xl md:w-6/12">
@@ -46,7 +46,7 @@ function Procedure() {
                     </ul>
                   </span>
                 </>
-              )}
+              )} */}
 
             {selectedProcedure.benefits &&
               selectedProcedure.benefits !== '' && (
