@@ -11,7 +11,7 @@ function Prodcedures() {
       <h1 className="self-center pt-5 text-xl font-bold sm:text-2xl">
         Procedimetos
       </h1>
-      <div className="flex flex-1 flex-wrap items-center justify-center gap-4 p-5">
+      <div className="flex flex-1 flex-wrap items-center justify-center gap-4">
         {procedures.map((procedure) => (
           <div
             key={procedure.name}
@@ -34,6 +34,9 @@ function Prodcedures() {
           </div>
         ))}
       </div>
+      <h1 className="mb-5 self-center text-center text-xl font-bold">
+        Promovendo relaxamento, qualidade de vida, conforto e satisfação.
+      </h1>
     </div>
   )
 }
