@@ -30,7 +30,7 @@ function Procedure() {
             </span>
           </div>
           <div className="infos flex flex-col items-center justify-center gap-5">
-            {/* {selectedProcedure.indications &&
+            {selectedProcedure.indications &&
               selectedProcedure.indications !== '' && (
                 <>
                   <h1 className="boder-2 text-xl font-bold sm:text-2xl md:w-6/12">
@@ -46,25 +46,8 @@ function Procedure() {
                     </ul>
                   </span>
                 </>
-              )} */}
-
-            {selectedProcedure.benefits &&
-              selectedProcedure.benefits !== '' && (
-                <>
-                  <h1 className="boder-2 text-xl font-bold sm:text-2xl md:w-6/12">
-                    Benefícios:
-                  </h1>
-                  <span className="text-sm sm:text-lg md:w-6/12">
-                    <ul>
-                      {selectedProcedure.benefits.split(';').map((i) => (
-                        <li className="list-disc" key={i}>
-                          {i}
-                        </li>
-                      ))}
-                    </ul>
-                  </span>
-                </>
               )}
+
             <h1 className="boder-2 text-xl font-bold sm:text-2xl md:w-6/12">
               Contraindicações:
             </h1>

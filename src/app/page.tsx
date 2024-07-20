@@ -8,7 +8,7 @@ import {
   CarouselNext,
 } from '@/components/ui/carousel'
 import { procedures } from '@/data/procedures'
-import { CalendarClock, CircleHelp } from 'lucide-react'
+import { CalendarClock, CircleHelp, MapPin } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
@@ -17,10 +17,10 @@ import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 
 export default function Home() {
-  const [size, setsize] = useState<number>(170)
+  const [size, setsize] = useState<number>(130)
 
   const newSize = () => {
-    setsize(window.innerWidth / 5 > 170 ? 170 : window.innerWidth / 5)
+    setsize(window.innerWidth / 7 > 130 ? 130 : window.innerWidth / 7)
   }
 
   useEffect(() => {
@@ -46,17 +46,17 @@ export default function Home() {
             Vitalidade.
           </span>
         </div>
-        <div className="action-icons break-word flex flex-wrap items-center justify-center gap-4 text-center">
-          <div className="about">
+        <div className="action-icons flex flex-wrap justify-center gap-5 text-center">
+          <div className="about w-10/12 max-w-[150px]">
             <Link
-              className="flex flex-col items-center justify-center"
+              className="break-word flex flex-col items-center justify-center"
               href="/sobre"
             >
               <CircleHelp size={size} />
               <span className="text-lg font-bold">Sobre mim</span>
             </Link>
           </div>
-          <div className="schedule">
+          <div className="schedule w-10/12 max-w-[150px]">
             <Link
               className="flex flex-col items-center justify-center"
               href="/agendamento"
@@ -65,7 +65,16 @@ export default function Home() {
               <span className="text-lg font-bold">Agendar atendimento</span>
             </Link>
           </div>
-          <div className="vitalidade">
+          <div className="location w-10/12 max-w-[150px]">
+            <Link
+              className="flex flex-col items-center justify-center"
+              href="https://www.google.com.br/maps/place/R.+Rio+Grande+do+Sul,+280+-+Juscelino,+Mesquita+-+RJ,+26553-320/@-22.7698772,-43.440055,17z/data=!3m1!4b1!4m6!3m5!1s0x9966f07ba29d05:0x647a2932347b4a37!8m2!3d-22.7698773!4d-43.4351841!16s%2Fg%2F11c7t48rmd?entry=ttu"
+            >
+              <MapPin size={size} />
+              <span className="text-lg font-bold">Local de atendimento</span>
+            </Link>
+          </div>
+          <div className="vitalidade w-10/12 max-w-[150px]">
             <Link
               className="flex flex-col items-center justify-center"
               href="https://institutovitalidade.com.br"

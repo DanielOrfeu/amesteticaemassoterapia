@@ -1,7 +1,7 @@
 export interface ProcedureModel {
   name: string
   description: string
-  benefits: string
+  indications: string
   contraindications: string
   pathName: string
 }
@@ -12,7 +12,7 @@ export const procedures: ProcedureModel[] = [
     description: `Auriculoterapia é um método terapêutico que utiliza a
       orelha (pavilhão auricular) para avaliação e tratamento
       das disfunções orgânicas, emocionais e dores em geral.`,
-    benefits: `Dores agudas e crônicas;
+    indications: `Dores agudas e crônicas;
       Enxaqueca;
       Insônia;
       Transtornos emocionais, como ansiedade e depressão;
@@ -43,7 +43,7 @@ export const procedures: ProcedureModel[] = [
       associada com o shiatsu (trata pontos da acupuntura),
       ayurvédica e drenagem linfática. E também é bastante
       utilizada em massagem relaxantes e modeladora`,
-    benefits: `Dor muscular;
+    indications: `Dor muscular;
       Tensão crônica;
       Prisão de ventre;
       Músculos atrofiados;
@@ -71,7 +71,7 @@ export const procedures: ProcedureModel[] = [
       linfático para eliminar líquidos e toxinas do corpo
       através de técnicas específicas nas vias linfáticas e nos
       gânglios linfáticos.`,
-    benefits: `Tecidos edemaciados circulação sanguínea de
+    indications: `Tecidos edemaciados circulação sanguínea de
       retorno comprometida;
       Edema no período gestacional e tensão prémenstrual;
       Tratamento de pré e pós-cirurgia plástica;
@@ -96,7 +96,7 @@ export const procedures: ProcedureModel[] = [
       alongar os músculos ao trabalhar com a fáscia através de
       pressão específica em pontos do corpo, promovendo
       maior liberdade de movimento.`,
-    benefits: `Aumenta a mobilidade articular;
+    indications: `Aumenta a mobilidade articular;
       Favorece execução dos movimentos;
       Diminui a sobrecarga e tensão músculo articular;
       Libera e ativa os músculos;
@@ -126,7 +126,7 @@ export const procedures: ProcedureModel[] = [
       para remover comedões abertos e fechados (cravos) e
       realizar esfoliação, removendo células mortas para
       revitalizar a pele.`,
-    benefits: `Remoção de cravos abertos (pontos pretos) ou
+    indications: `Remoção de cravos abertos (pontos pretos) ou
       fechados (pontos brancos);
       Remoção de milium (cravos resistentes, cobertos por
       uma fina camada de pele) e pontos sebáceos;
@@ -148,7 +148,7 @@ export const procedures: ProcedureModel[] = [
       promovendo relaxamento profundo, desobstrução energética
       e revitalização muscular. Os clientes relatam aumento de
       energia e capacidade de trabalho após o tratamento.`,
-    benefits: `Dores musculares;
+    indications: `Dores musculares;
       Tensão crônica;
       Atrofia dos músculos;
       Estresse;
@@ -186,7 +186,7 @@ export const procedures: ProcedureModel[] = [
       Aplicada quente no corpo com técnicas de massagem,
       proporciona relaxamento, bem-estar e os benefícios da
       aromaterapia.`,
-    benefits: `Alívio imediato das tensões musculares;
+    indications: `Alívio imediato das tensões musculares;
       Melhoria do tônus muscular;
       Hidratação da pele por até 15 dias;
       Melhoria da vascularização;
@@ -223,7 +223,7 @@ export const procedures: ProcedureModel[] = [
       Recomenda-se sua aplicação tanto nos dias de treino quanto em dias
       intercalados, além de ser benéfica para relaxar os músculos após
       competições intensas.`,
-    benefits: `Previne lesões;
+    indications: `Previne lesões;
       Reduz espasmos musculares, edemas e processos inflamatórios;
       Prepara a musculatura para o exercício;
       Elimina as toxinas da musculatura;
@@ -263,7 +263,7 @@ export const procedures: ProcedureModel[] = [
       temperatura local e acelerando o metabolismo celular.
       Utiliza pressão intensa para alcançar as camadas
       profundas e reduzir a aparência da celulite.`,
-    benefits: `Reduzir medidas;
+    indications: `Reduzir medidas;
       Modelar o corpo;
       Ativar o metabolismo;
       Aumentar a circulação sanguínea;
@@ -282,7 +282,7 @@ export const procedures: ProcedureModel[] = [
       particular a massagem para idosos é ainda mais eficaz
       devido aos desafios tanto emocionais quanto físicos que
       os idosos experimentam`,
-    benefits: `Melhorar a circulação sanguínea e linfática;
+    indications: `Melhorar a circulação sanguínea e linfática;
       Estimular a produção de colágeno na pele
       (elasticidade e hidratação);
       Aliviar as dores em geral;
@@ -315,7 +315,7 @@ export const procedures: ProcedureModel[] = [
       promover relaxamento e bem-estar. A liberação de ocitocina durante o
       tratamento combate tensão muscular, estresse, melhora a função
       intestinal e a pressão arterial.`,
-    benefits: `Controle do estresse e problemas emocionais;
+    indications: `Controle do estresse e problemas emocionais;
       Tratamento da ansiedade;
       Casos de fadiga e insônia;
       Normalização do humor;
@@ -356,7 +356,7 @@ export const procedures: ProcedureModel[] = [
       confortável e relaxante, proporcionado logo no primeiro atendimento, o alívio 
       imediato de dores musculares das regiões cervical, dorsal, lombar e membros superiores 
       e das tensões e cansaço do dia-a-dia.`,
-    benefits: `Melhora a produtividade diária;
+    indications: `Melhora a produtividade diária;
       Músculos fatigados; 
       Lesão por movimentos repetitivos (LER); 
       Dores de cabeça; 
@@ -386,7 +386,7 @@ export const procedures: ProcedureModel[] = [
       pontos do pé, isso tem um efeito positivo sobre o membro,
       órgão, glândula, músculos, tendões o articulações
       correspondente a eles`,
-    benefits: `Stress (uma fonte de muitos problemas de saúde!);
+    indications: `Stress (uma fonte de muitos problemas de saúde!);
       Preocupações;
       Dores de cabeça;
       Insônias;
@@ -418,7 +418,7 @@ export const procedures: ProcedureModel[] = [
       harmonioso da energia vital ao longo dos meridianos de
       acupuntura, proporcionando bem-estar físico e
       energético.`,
-    benefits: `Dores musculares (tendinites, fibromialgia etc);
+    indications: `Dores musculares (tendinites, fibromialgia etc);
       Doenças respiratórias (asma, bronquite, rinite, sinusite
       ou resfriados);
       Problemas circulatórios (varizes, arritmia, hipertensão
@@ -439,7 +439,7 @@ export const procedures: ProcedureModel[] = [
       funcionando como uma forma de tratamento, como
       também é um ótimo aliado para prevenir problemas na
       região.`,
-    benefits: `Proporciona relaxamento;
+    indications: `Proporciona relaxamento;
       Atua na circulação sanguínea;
       Alivia as dores;
       Promove muita maciez;
@@ -468,7 +468,7 @@ export const procedures: ProcedureModel[] = [
       conforme a Medicina Tradicional Chinesa. Promove
       melhoria na imunidade, oxigenação celular e saúde da
       pele.`,
-    benefits: `Eliminação de dores nas costas devido tensão
+    indications: `Eliminação de dores nas costas devido tensão
       muscular ou contraturas;
       Desintoxicação do organismo;
       Alívio de dores musculares, abdominais e nas
