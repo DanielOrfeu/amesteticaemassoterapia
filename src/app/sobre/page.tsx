@@ -14,7 +14,7 @@ function About() {
           Técnicas Básicas de Massoterapia/ Drenagem Linfática/ Bambuterapia e
           Pedras Quentes/ Massagem Turbinada (SIMONSEN)
         </li>
-        <li>Massagem em Idosos (SIMONSEN) - 30 horas</li>
+        <li>Massagem em Idosos (SIMONSEN)</li>
         <li>Liberação Miofascial (Professor Alexandre Souza)</li>
         <li>Reflexologia - IBRATH</li>
         <li>Auriculoterapia - IBRATH</li>

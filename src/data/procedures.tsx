@@ -253,7 +253,7 @@ export const procedures: ProcedureModel[] = [
       Hipertensão arterial.;
       Câncer;
       Pessoas com hematomas graves, Imediatamente após operações
-      cirúrgicas;`,
+      cirúrgicas`,
     pathName: 'massagem-desportiva',
   },
   {

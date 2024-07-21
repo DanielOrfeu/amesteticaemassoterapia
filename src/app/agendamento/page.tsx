@@ -17,7 +17,6 @@ import {
 import { Input } from '@/components/ui/input'
 import { procedures } from '@/data/procedures'
 import { Checkbox } from '@/components/ui/checkbox'
-import { useEffect } from 'react'
 
 const FormSchema = z.object({
   name: z
@@ -77,6 +76,9 @@ const FormSchema = z.object({
 export default function Agendamento() {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
+    defaultValues: {
+      procedures: [useSearchParams().get('procedimento') || ''],
+    },
   })
 
   const sendToWhasApp = (data: z.infer<typeof FormSchema>) => {
@@ -93,12 +95,6 @@ export default function Agendamento() {
       '_blank',
     )
   }
-
-  const procedimento = useSearchParams().get('procedimento')
-
-  useEffect(() => {
-    form.setValue('procedures', procedimento ? [procedimento] : [])
-  }, [procedimento, form])
 
   return (
     <div className="flex flex-1 flex-col items-center justify-center p-5">
