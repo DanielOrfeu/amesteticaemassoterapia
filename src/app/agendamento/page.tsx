@@ -85,7 +85,7 @@ export default function Agendamento() {
       .replace(
         /,/g,
         '\n',
-      )}\n\nSe fiz ou faço tratamento para alguma doença? N/A\nSe tenho alguma alergia? N/A\n\nAguardo retorno. Obrigado!`
+      )}\n\nSe fiz ou faço tratamento para alguma doença? ${data.treatments || 'N/A'}\nSe tenho alguma alergia? ${data.allergies || 'N/A'}\n\nAguardo retorno. Obrigado!`
 
     window.open(
       `https://wa.me/5521989711190?text=${encodeURIComponent(textToSend)}`,
@@ -229,7 +229,9 @@ export default function Agendamento() {
             name="treatments"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Fez ou faz algum tratamento?</FormLabel>
+                <FormLabel>
+                  Fez ou faz algum tratamento? Se sim, qual(is)?
+                </FormLabel>
                 <FormControl>
                   <Input
                     placeholder="Tratamentos de combate à doenças"
