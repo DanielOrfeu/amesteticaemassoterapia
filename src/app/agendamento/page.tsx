@@ -3,7 +3,7 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
-
+import { useSearchParams } from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import {
   Form,
@@ -17,6 +17,7 @@ import {
 import { Input } from '@/components/ui/input'
 import { procedures } from '@/data/procedures'
 import { Checkbox } from '@/components/ui/checkbox'
+import { useEffect } from 'react'
 
 const FormSchema = z.object({
   name: z
@@ -78,9 +79,9 @@ export default function Agendamento() {
     resolver: zodResolver(FormSchema),
   })
 
-  function sendToWhasApp(data: z.infer<typeof FormSchema>) {
+  const sendToWhasApp = (data: z.infer<typeof FormSchema>) => {
     const textToSend = `Olá! Me chamo ${data.name}, tenho ${data.age} anos e trabalho como *${data.job}*.\nEstou com algums problemas como *${data.complaint}* e gostaria de agendar atendimento pada o(s) procedimento(s):\n\n${data.procedures
-      .map((item) => `*${item}*`)
+      .map((item) => `*${procedures.find((p) => p.pathName === item)?.name}*`)
       .toString()
       .replace(
         /,/g,
@@ -92,6 +93,12 @@ export default function Agendamento() {
       '_blank',
     )
   }
+
+  const procedimento = useSearchParams().get('procedimento')
+
+  useEffect(() => {
+    form.setValue('procedures', procedimento ? [procedimento] : [])
+  }, [procedimento, form])
 
   return (
     <div className="flex flex-1 flex-col items-center justify-center p-5">
@@ -179,16 +186,19 @@ export default function Agendamento() {
                           >
                             <FormControl>
                               <Checkbox
-                                checked={field.value?.includes(procedure.name)}
+                                checked={field.value?.includes(
+                                  procedure.pathName,
+                                )}
                                 onCheckedChange={(checked) => {
                                   return checked
                                     ? field.onChange([
                                         ...(field.value || []),
-                                        procedure.name,
+                                        procedure.pathName,
                                       ])
                                     : field.onChange(
                                         field.value?.filter(
-                                          (value) => value !== procedure.name,
+                                          (value) =>
+                                            value !== procedure.pathName,
                                         ),
                                       )
                                 }}

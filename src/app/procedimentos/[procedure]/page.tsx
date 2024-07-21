@@ -64,7 +64,7 @@ function Procedure() {
           <Button className="mt-8 w-fit self-center">
             <Link
               className="flex flex-row items-center gap-2"
-              href={`https://wa.me/5521989711190?text=${encodeURIComponent(`Olá. Gostaria de agendar um horário de atendimento para ${selectedProcedure.name}.`)}`}
+              href={`/agendamento?procedimento=${selectedProcedure.pathName}`}
             >
               <PhoneCall size={24} className="hidden sm:flex" />
               <span className="">Agendar procedimento</span>
