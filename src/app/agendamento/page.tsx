@@ -19,48 +19,58 @@ import { procedures } from '@/data/procedures'
 import { Checkbox } from '@/components/ui/checkbox'
 
 const FormSchema = z.object({
-  name: z.string({
-    required_error: 'Nome é obrigatório',
-  })
-    .min(2, {message: 'Nome é obrigatório',})
+  name: z
+    .string({
+      required_error: 'Nome é obrigatório',
+    })
+    .min(2, { message: 'Nome é obrigatório' })
     .trim()
-    .refine(name => name.split(' ').length > 1, {message: 'Insira um sobrenome',})
-    .transform(name => {
-      return name.split(' ').map((word) => {
-        return word[0].toUpperCase() + word.substring(1)
-      }).join(' ')
+    .refine((name) => name.split(' ').length > 1, {
+      message: 'Insira um sobrenome',
+    })
+    .transform((name) => {
+      return name
+        .split(' ')
+        .map((word) => {
+          return word[0].toUpperCase() + word.substring(1)
+        })
+        .join(' ')
     }),
 
-  age: z.string({
-    required_error: 'Idade é obrigatório',
-  })
-    .refine(age => !Number.isNaN(+age), {message: 'Valor inválido para idade',})
-    .refine(age => +age >= 0 && +age <= 99, {message: 'Idade inválida',}),
-  
-    job: z.string({
-    required_error: 'Ocupação é obrigatório',
-  })
-    .min(2, {message: 'Ocupação é obrigatório',})
+  age: z
+    .string({
+      required_error: 'Idade é obrigatório',
+    })
+    .refine((age) => !Number.isNaN(+age), {
+      message: 'Valor inválido para idade',
+    })
+    .refine((age) => +age >= 0 && +age <= 99, { message: 'Idade inválida' }),
+
+  job: z
+    .string({
+      required_error: 'Ocupação é obrigatório',
+    })
+    .min(2, { message: 'Ocupação é obrigatório' })
     .trim(),
-  
-  procedures: z.array(z.string(), {
-    required_error: "Selecione ao menos um procedimento"
-  })
+
+  procedures: z
+    .array(z.string(), {
+      required_error: 'Selecione ao menos um procedimento',
+    })
     .refine((value) => value.some((item) => item), {
-      message: "Selecione ao menos um procedimento",
+      message: 'Selecione ao menos um procedimento',
     }),
 
-  complaint: z.string({
-    required_error: 'Queixa é obrigatória',
-  })
-    .min(2, {message: 'Queixa é obrigatória',})
+  complaint: z
+    .string({
+      required_error: 'Queixa é obrigatória',
+    })
+    .min(2, { message: 'Queixa é obrigatória' })
     .trim(),
 
-  treatments: z.string()
-    .optional(),  
+  treatments: z.string().optional(),
 
-  allergies: z.string()
-    .optional(),  
+  allergies: z.string().optional(),
 })
 
 export default function Agendamento() {
@@ -68,16 +78,27 @@ export default function Agendamento() {
     resolver: zodResolver(FormSchema),
   })
 
-  function sendToWhasApp(data: z.infer<typeof FormSchema>) {  
-    let textToSend = `Olá! Me chamo ${data.name}, tenho ${data.age} anos e trabalho como *${data.job}*.\nEstou com algums problemas como *${data.complaint}* e gostaria de agendar atendimento pada o(s) procedimento(s):\n\n${data.procedures.map(item => `*${item}*`).toString().replace(/,/g, '\n')}\n\nSe fiz ou faço tratamento para alguma doença? N/A\nSe tenho alguma alergia? N/A\n\nAguardo retorno. Obrigado!`
-    
-    window.open(`https://wa.me/5521989711190?text=${encodeURIComponent(textToSend)}`, '_blank')
+  function sendToWhasApp(data: z.infer<typeof FormSchema>) {
+    const textToSend = `Olá! Me chamo ${data.name}, tenho ${data.age} anos e trabalho como *${data.job}*.\nEstou com algums problemas como *${data.complaint}* e gostaria de agendar atendimento pada o(s) procedimento(s):\n\n${data.procedures
+      .map((item) => `*${item}*`)
+      .toString()
+      .replace(
+        /,/g,
+        '\n',
+      )}\n\nSe fiz ou faço tratamento para alguma doença? N/A\nSe tenho alguma alergia? N/A\n\nAguardo retorno. Obrigado!`
+
+    window.open(
+      `https://wa.me/5521989711190?text=${encodeURIComponent(textToSend)}`,
+      '_blank',
+    )
   }
 
   return (
     <div className="flex flex-1 flex-col items-center justify-center p-5">
-      <h1 className='text-2xl font-bold py-2 text-center'>Agendar atendimento</h1>
-      <span className='text-center'>Preencha todos os dados abaixo:</span>
+      <h1 className="py-2 text-center text-2xl font-bold">
+        Agendar atendimento
+      </h1>
+      <span className="text-center">Preencha todos os dados abaixo:</span>
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(sendToWhasApp)}
@@ -90,12 +111,14 @@ export default function Agendamento() {
               <FormItem>
                 <FormLabel>Nome</FormLabel>
                 <FormControl>
-                  <Input placeholder="Insira seu nome e um sobrenome" {...field} />
+                  <Input
+                    placeholder="Insira seu nome e um sobrenome"
+                    {...field}
+                  />
                 </FormControl>
-                <FormDescription/>
+                <FormDescription />
                 <FormMessage />
               </FormItem>
-              
             )}
           />
           <FormField
@@ -105,12 +128,15 @@ export default function Agendamento() {
               <FormItem>
                 <FormLabel>Idade</FormLabel>
                 <FormControl>
-                  <Input placeholder="Sua idade aqui" type='number' {...field} />
+                  <Input
+                    placeholder="Sua idade aqui"
+                    type="number"
+                    {...field}
+                  />
                 </FormControl>
-                <FormDescription/>
+                <FormDescription />
                 <FormMessage />
               </FormItem>
-              
             )}
           />
           <FormField
@@ -122,10 +148,9 @@ export default function Agendamento() {
                 <FormControl>
                   <Input placeholder="Seu trabalho atual" {...field} />
                 </FormControl>
-                <FormDescription/>
+                <FormDescription />
                 <FormMessage />
               </FormItem>
-              
             )}
           />
 
@@ -157,11 +182,14 @@ export default function Agendamento() {
                                 checked={field.value?.includes(procedure.name)}
                                 onCheckedChange={(checked) => {
                                   return checked
-                                    ? field.onChange([...field.value || [], procedure.name])
+                                    ? field.onChange([
+                                        ...(field.value || []),
+                                        procedure.name,
+                                      ])
                                     : field.onChange(
                                         field.value?.filter(
-                                          (value) => value !== procedure.name
-                                        )
+                                          (value) => value !== procedure.name,
+                                        ),
                                       )
                                 }}
                               />
@@ -186,12 +214,14 @@ export default function Agendamento() {
               <FormItem>
                 <FormLabel>Queixa principal</FormLabel>
                 <FormControl>
-                  <Input placeholder="Motivo da procura dos procedimentos" {...field} />
+                  <Input
+                    placeholder="Motivo da procura dos procedimentos"
+                    {...field}
+                  />
                 </FormControl>
-                <FormDescription/>
+                <FormDescription />
                 <FormMessage />
               </FormItem>
-              
             )}
           />
           <FormField
@@ -201,12 +231,14 @@ export default function Agendamento() {
               <FormItem>
                 <FormLabel>Fez ou faz algum tratamento?</FormLabel>
                 <FormControl>
-                  <Input placeholder="Tratamentos de combate à doenças" {...field} />
+                  <Input
+                    placeholder="Tratamentos de combate à doenças"
+                    {...field}
+                  />
                 </FormControl>
-                <FormDescription/>
+                <FormDescription />
                 <FormMessage />
               </FormItem>
-              
             )}
           />
           <FormField
@@ -216,12 +248,14 @@ export default function Agendamento() {
               <FormItem>
                 <FormLabel>Possui alergia(s)?</FormLabel>
                 <FormControl>
-                  <Input placeholder="Exemplo: Rinite, sinusite, etc" {...field} />
+                  <Input
+                    placeholder="Exemplo: Rinite, sinusite, etc"
+                    {...field}
+                  />
                 </FormControl>
-                <FormDescription/>
+                <FormDescription />
                 <FormMessage />
               </FormItem>
-              
             )}
           />
           <Button type="submit">Enviar</Button>
